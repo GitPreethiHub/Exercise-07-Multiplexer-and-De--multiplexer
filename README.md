@@ -47,42 +47,82 @@ If the control input changes to AB = 10, then all the gates are restricted excep
  
  
 ### Procedure
-/* write all the steps invloved */
+     Compile and run the verilog program in the quartus software.
+     Realize the RTL logic for the same.
+     Create a new university program vwf and import nodes using node finder.
+     Run functional simulation to obtain the timing diagram.
 
 
 
 ### PROGRAM 
-/*
-Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+     /*
+     Program for flipflops  and verify its truth table in quartus using Verilog programming.
+     Developed by: Preethi M
+     RegisterNumber: 22000091 
+     */
+     Multiplexer program:
+     module mux(I0,I1,I2,I3,S0,S1,Y);
+     input I0,I1,I2,I3,S0,S1;
+     output Y;
+     wire S0C,S1C;
+     not(S0C,S0);
+     not(S1C,S1);
+     wire P,Q,R,S;
+     and(P,S0C,S1C,I0);
+     and(Q,S0C,S1,I1);
+      and(R,S0,S1C,I2);
+     and(S,S0,S1,I3);
+     or(Y,P,Q,R,S);
+     endmodule
 
-
-
-
-
+     Demultiplexer program:
+     module demux(i,s0,s1,s2,y0,y1,y2,y3,y4,y5,y6,y7);
+     input i,s0,s1,s2;
+     output y0,y1,y2,y3,y4,y5,y6,y7;
+     wire s0c,s1c,s2c;
+     not(s0c,s0);
+     not(s1c,s1);
+     not(s2c,s2);
+     and(y0,s0c,s1c,s2c,i);
+     and(y1,s0c,s1c,s2,i);
+     and(y2,s0c,s1,s2c,i);
+     and(y3,s0c,s1,s2,i);
+     and(y4,s0,s1c,s2c,i);
+     and(y5,s0,s1c,s2,i);
+     and(y6,s0,s1,s2c,i);
+     and(y7,s0,s1,s2,i);
+     endmodule
 
 ### RTL LOGIC  
+   Multiplexer
 
+  ![images](/images/Muxrtl.png)
 
+  Demultiplexer
 
-
-
-
-
+  ![images](/images/DemuxRtl.png)
 
 ### TIMING DIGRAMS  
 
+Multiplexer
 
+![images](/images/MuxSim.png)
 
+Demultiplxer
 
+![images](/images/DemuxSim.png)
 
 ### TRUTH TABLE 
 
+   Multiplexer
 
+![images](https://i.imgur.com/CO6sJ8I.png)
 
+Demultiplxer
 
-
+![images](https://i.imgur.com/35e03NY.jpg)
 
 ### RESULTS 
+
+   Thus Multiplexer and demultiplexer are implemented using verilog
+   
